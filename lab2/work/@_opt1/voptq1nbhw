@@ -1,0 +1,118 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\badit\Desktop\TSC\lab2
+T_opt
+Z1 VR?8@jRb5=;b:77AHDcKMi0
+Z2 04 19 4 work instr_register_test fast 0
+Z3 =1-2cfda1b09cf8-622f0244-245-104c
+Z4 o-quiet -auto_acc_if_foreign -work work
+Z5 n@_opt
+Z6 OE;O;6.6d;45
+Z7 dC:\Users\badit\Desktop\TSC\lab2
+T_opt1
+Z8 VdlYg=OJA>f7fPa@_>=hjo3
+Z9 04 3 4 work top fast 0
+Z10 =1-2cfda1b09cf8-622f0a6f-295-38d4
+R4
+Z11 n@_opt1
+R6
+R7
+vinstr_register
+Z12 Mx1 24 C:\modeltech_6.6d\sv_std 3 std
+Z13 DXx24 C:\modeltech_6.6d\sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+Z14 Mx2 36 C:\Users\badit\Desktop\TSC\lab2\work 18 instr_register_pkg
+Z15 DXx36 C:\Users\badit\Desktop\TSC\lab2\work 18 instr_register_pkg 0 22 :JTF@fFZEAY;_aRJ`=BP83
+Z16 Izlgh4QQ_5WV`>EDVk6A=21
+Z17 V3z9A3Eb_VM7O2iR_@`ig80
+S1
+R7
+Z18 w1647247855
+Z19 8C:/Users/badit/Desktop/TSC/lab2/lab_dut/instr_register.sv
+Z20 FC:/Users/badit/Desktop/TSC/lab2/lab_dut/instr_register.sv
+L0 9
+Z21 OE;L;6.6d;45
+r1
+31
+Z22 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
+Z23 !s100 6^c4H@z>TICN;NJ=0DO5K2
+Z24 !s105 instr_register_sv_unit
+!s85 0
+Xinstr_register_pkg
+R12
+R13
+Z25 I:JTF@fFZEAY;_aRJ`=BP83
+Z26 V:JTF@fFZEAY;_aRJ`=BP83
+S1
+R7
+Z27 w1647247835
+Z28 8C:/Users/badit/Desktop/TSC/lab2/lab_dut/instr_register_pkg.sv
+Z29 FC:/Users/badit/Desktop/TSC/lab2/lab_dut/instr_register_pkg.sv
+L0 5
+R21
+r1
+31
+R22
+Z30 !s100 V^fH5UCOegY6PL:OBDSV^3
+!s85 0
+vinstr_register_test
+R12
+R13
+R14
+R15
+Z31 IeE@zg4z7R<MT>fGAO>[zW2
+Z32 V6`6FSaj6O_Q_la;B1RaSU0
+S1
+R7
+Z33 w1647247902
+Z34 8C:/Users/badit/Desktop/TSC/lab2/lab01_testbench-interface/instr_register_test.sv
+Z35 FC:/Users/badit/Desktop/TSC/lab2/lab01_testbench-interface/instr_register_test.sv
+L0 8
+R21
+r1
+31
+R22
+Z36 !s100 O;GFnFkG5gNoFCZ]E>UU@2
+Z37 !s105 instr_register_test_sv_unit
+!s85 0
+Ytb_ifc
+R12
+R13
+R14
+R15
+Z38 I8=1FCZV]z3V;AEThG[L=P2
+Z39 V[2MM;6bj4cE27ld353ZQ90
+S1
+R7
+Z40 w1647249571
+Z41 8C:/Users/badit/Desktop/TSC/lab2/lab01_testbench-interface/tb_ifc.sv
+Z42 FC:/Users/badit/Desktop/TSC/lab2/lab01_testbench-interface/tb_ifc.sv
+L0 5
+R21
+r1
+31
+R22
+Z43 !s100 BC84V@QW:MOJh<?G>;_C32
+Z44 !s105 tb_ifc_sv_unit
+!s85 0
+vtop
+R12
+R13
+R14
+R15
+Z45 I:A>YNNbIGoOQ[78Z7>n651
+Z46 Ve:gFW1CKLAXc^T:7k2HoD1
+Z47 !s105 top_sv_unit
+S1
+R7
+Z48 w1647249991
+Z49 8C:/Users/badit/Desktop/TSC/lab2/lab01_testbench-interface/top.sv
+Z50 FC:/Users/badit/Desktop/TSC/lab2/lab01_testbench-interface/top.sv
+L0 5
+R21
+r1
+31
+R22
+Z51 !s100 f=MJDWzbffTj55AV`AI2E2
+!s85 0
