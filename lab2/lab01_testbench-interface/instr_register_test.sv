@@ -22,8 +22,8 @@ module instr_register_test
     $display(    "***********************************************************");
 
     $display("\nReseting the instruction register...");
-    write_pointer  = 5'h00;         // initialize write pointer
-    read_pointer   = 5'h1F;         // initialize read pointer
+    test_if.write_pointer  = 5'h00;         // initialize write pointer
+    test_if.read_pointer   = 5'h1F;         // initialize read pointer
     test_if.load_en        = 1'b0;          // initialize load control line
     test_if.reset_n       <= 1'b0;          // assert reset_n (active low)
     repeat (2) @(posedge clk) ;     // hold in reset for 2 clock cycles
@@ -43,7 +43,7 @@ module instr_register_test
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
-      @(posedge clk) read_pointer = i;
+      @(posedge clk) test_if.read_pointer = i;
       @(negedge clk) print_results;
     end
 
@@ -80,7 +80,7 @@ module instr_register_test
 
   function void print_results;
     $display("Read from register location %0d: ", test_if.read_pointer);
-    $display("  opcode = %0d (%s)", test_if,instruction_word.opc, test_if.instruction_word.opc.name);
+    $display("  opcode = %0d (%s)", test_if.instruction_word.opc, test_if.instruction_word.opc.name);
     $display("  operand_a = %0d",   test_if.instruction_word.op_a);
     $display("  operand_b = %0d\n", test_if.instruction_word.op_b);
   endfunction: print_results
