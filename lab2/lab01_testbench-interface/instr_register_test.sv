@@ -26,16 +26,16 @@ module instr_register_test
     test_if.read_pointer   = 5'h1F;         // initialize read pointer
     test_if.load_en        = 1'b0;          // initialize load control line
     test_if.reset_n       <= 1'b0;          // assert reset_n (active low)
-    repeat (2) @(posedge clk) ;     // hold in reset for 2 clock cycles
+    repeat (2) @(posedge test_if.clk) ;     // hold in reset for 2 clock cycles
     test_if.reset_n        = 1'b1;          // deassert reset_n (active low)
 
     $display("\nWriting values to register stack...");
-    @(posedge clk) test_if.load_en = 1'b1;  // enable writing to register
+    @(posedge test_if.clk) test_if.load_en = 1'b1;  // enable writing to register
     repeat (3) begin
-      @(posedge clk) randomize_transaction;
-      @(negedge clk) print_transaction;
+      @(posedge test_if.clk) randomize_transaction;
+      @(negedge test_if.clk) print_transaction;
     end
-    @(posedge clk) test_if.load_en = 1'b0;  // turn-off writing to register
+    @(posedge test_if.clk) test_if.load_en = 1'b0;  // turn-off writing to register
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
@@ -43,11 +43,11 @@ module instr_register_test
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
-      @(posedge clk) test_if.read_pointer = i;
-      @(negedge clk) print_results;
+      @(posedge test_if.clk) test_if.read_pointer = i;
+      @(negedge test_if.clk) print_results;
     end
 
-    @(posedge clk) ;
+    @(posedge test_if.clk) ;
     $display("\n***********************************************************");
     $display(  "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
