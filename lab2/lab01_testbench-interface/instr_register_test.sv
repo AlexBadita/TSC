@@ -22,20 +22,20 @@ module instr_register_test
     $display(    "***********************************************************");
 
     $display("\nReseting the instruction register...");
-    test_if.cb.write_pointer  = 5'h00;         // initialize write pointer
-    test_if.cb.read_pointer   = 5'h1F;         // initialize read pointer
-    test_if.cb.load_en        = 1'b0;          // initialize load control line
-    test_if.cb.reset_n       <= 1'b0;          // assert reset_n (active low)
+    test_if.cb.write_pointer  <= 5'h00;         // initialize write pointer
+    test_if.cb.read_pointer   <= 5'h1F;         // initialize read pointer
+    test_if.cb.load_en        <= 1'b0;          // initialize load control line
+    test_if.cb.reset_n        <= 1'b0;          // assert reset_n (active low)
     repeat (2) @(posedge test_if.cb) ;     // hold in reset for 2 clock cycles
-    test_if.cb.reset_n        = 1'b1;          // deassert reset_n (active low)
+    test_if.cb.reset_n        <= 1'b1;          // deassert reset_n (active low)
 
     $display("\nWriting values to register stack...");
-    @(posedge test_if.cb) test_if.cb.load_en = 1'b1;  // enable writing to register
+    @(posedge test_if.cb) test_if.cb.load_en <= 1'b1;  // enable writing to register
     repeat (3) begin
-      @(posedge test_if.TEST.cb) randomize_transaction;
-      @(negedge test_if.TEST.cb) print_transaction;
+      @(posedge test_if.cb) randomize_transaction;
+      @(negedge test_if.cb) print_transaction;
     end
-    @(posedge test_if.cb) test_if.cb.load_en = 1'b0;  // turn-off writing to register
+    @(posedge test_if.cb) test_if.cb.load_en <= 1'b0;  // turn-off writing to register
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
@@ -43,7 +43,7 @@ module instr_register_test
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
-      @(posedge test_if.cb) test_if.cb.read_pointer = i;
+      @(posedge test_if.cb) test_if.cb.read_pointer <= i;
       @(negedge test_if.cb) print_results;
     end
 
