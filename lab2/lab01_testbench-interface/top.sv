@@ -34,6 +34,7 @@ module top;
     .reset_n(tb_lab.reset_n),
     .operand_a(tb_lab.operand_a),
     .operand_b(tb_lab.operand_b),
+    .result(tb_lab.result),
     .opcode(tb_lab.opcode),
     .write_pointer(tb_lab.write_pointer),
     .read_pointer(tb_lab.read_pointer),

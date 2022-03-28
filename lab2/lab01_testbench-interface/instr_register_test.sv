@@ -42,18 +42,18 @@ module instr_register_test
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
-    // for (int i=0; i<=10; i++) begin
-    //   // later labs will replace this loop with iterating through a
-    //   // scoreboard to determine which addresses were written and
-    //   // the expected values to be read back
-    //   @(posedge test_if.cb) test_if.cb.read_pointer <= i;
-    //   @(negedge test_if.cb) print_results;
-    // end
-
-    for (int i=0; i<=10; i++) begin
-      @(posedge test_if.cb) test_if.cb.read_pointer <= $unsigned($random)%10;
+    for (int i=0; i<=9; i++) begin
+      // later labs will replace this loop with iterating through a
+      // scoreboard to determine which addresses were written and
+      // the expected values to be read back
+      @(posedge test_if.cb) test_if.cb.read_pointer <= i;
       @(negedge test_if.cb) print_results;
     end
+
+    // for (int i=0; i<=10; i++) begin
+    //   @(posedge test_if.cb) test_if.cb.read_pointer <= $unsigned($random)%10;
+    //   @(negedge test_if.cb) print_results;
+    // end
 
     @(posedge test_if.cb) ;
     $display("\n***********************************************************");
@@ -84,6 +84,7 @@ module instr_register_test
     $display("  opcode = %0d (%s)", test_if.cb.opcode, test_if.cb.opcode.name);
     $display("  operand_a = %0d",   test_if.cb.operand_a);
     $display("  operand_b = %0d", test_if.cb.operand_b);
+    $display("  result = %0d", test_if.cb.result);
     $display("  time = %0d\n", $time);
   endfunction: print_transaction
 
@@ -92,6 +93,7 @@ module instr_register_test
     $display("  opcode = %0d (%s)", test_if.cb.instruction_word.opc, test_if.cb.instruction_word.opc.name);
     $display("  operand_a = %0d",   test_if.cb.instruction_word.op_a);
     $display("  operand_b = %0d", test_if.cb.instruction_word.op_b);
+    $display("  result = %0d", test_if.cb.instruction_word.result);
     $display("  time = %0d\n", $time);
   endfunction: print_results
 
