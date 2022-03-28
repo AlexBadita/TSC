@@ -12,7 +12,7 @@ module instr_register_test
 
   //timeunit 1ns/1ns;
 
-  int seed = 555;
+  int seed = 555; // seed = valoare initiala pt randomizare
 
   initial begin
     $display("\n\n***********************************************************");
@@ -31,19 +31,27 @@ module instr_register_test
 
     $display("\nWriting values to register stack...");
     @(posedge test_if.cb) test_if.cb.load_en <= 1'b1;  // enable writing to register
-    repeat (3) begin
+    repeat (10) begin
       @(posedge test_if.cb) randomize_transaction;
       @(negedge test_if.cb) print_transaction;
     end
     @(posedge test_if.cb) test_if.cb.load_en <= 1'b0;  // turn-off writing to register
 
+    // fct -> nu pot fi instr temporale (nu consuma timp)
+    // task -> se pot pune val temporale
+
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
-    for (int i=0; i<=2; i++) begin
-      // later labs will replace this loop with iterating through a
-      // scoreboard to determine which addresses were written and
-      // the expected values to be read back
-      @(posedge test_if.cb) test_if.cb.read_pointer <= i;
+    // for (int i=0; i<=10; i++) begin
+    //   // later labs will replace this loop with iterating through a
+    //   // scoreboard to determine which addresses were written and
+    //   // the expected values to be read back
+    //   @(posedge test_if.cb) test_if.cb.read_pointer <= i;
+    //   @(negedge test_if.cb) print_results;
+    // end
+
+    for (int i=0; i<=10; i++) begin
+      @(posedge test_if.cb) test_if.cb.read_pointer <= $unsigned($random)%10;
       @(negedge test_if.cb) print_results;
     end
 
@@ -67,22 +75,24 @@ module instr_register_test
     static int temp = 0;
     test_if.cb.operand_a     <= $random(seed)%16;                 // between -15 and 15
     test_if.cb.operand_b     <= $unsigned($random)%16;            // between 0 and 15
-    test_if.cb.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
-    test_if.cb.write_pointer <= temp++;
+    test_if.cb.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type; casting
+    test_if.cb.write_pointer <= temp++; // <= -> temp; = -> (temp + 1)
   endfunction: randomize_transaction
 
   function void print_transaction;
     $display("Writing to register location %0d: ", test_if.cb.write_pointer);
     $display("  opcode = %0d (%s)", test_if.cb.opcode, test_if.cb.opcode.name);
     $display("  operand_a = %0d",   test_if.cb.operand_a);
-    $display("  operand_b = %0d\n", test_if.cb.operand_b);
+    $display("  operand_b = %0d", test_if.cb.operand_b);
+    $display("  time = %0d\n", $time);
   endfunction: print_transaction
 
   function void print_results;
     $display("Read from register location %0d: ", test_if.cb.read_pointer);
     $display("  opcode = %0d (%s)", test_if.cb.instruction_word.opc, test_if.cb.instruction_word.opc.name);
     $display("  operand_a = %0d",   test_if.cb.instruction_word.op_a);
-    $display("  operand_b = %0d\n", test_if.cb.instruction_word.op_b);
+    $display("  operand_b = %0d", test_if.cb.instruction_word.op_b);
+    $display("  time = %0d\n", $time);
   endfunction: print_results
 
 endmodule: instr_register_test

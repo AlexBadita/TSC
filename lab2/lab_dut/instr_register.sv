@@ -43,3 +43,8 @@ end
 `endif
 
 endmodule: instr_register
+
+// tema
+// de adaugat in instruction_word (package) un semnal result (definim noi tipul)
+// in dut, in functie de tipul de opcode, sa facem operatia
+// switch (case) -> tip enum, result primeste tipul operatiei
