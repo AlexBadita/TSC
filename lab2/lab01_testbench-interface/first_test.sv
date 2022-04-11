@@ -1,5 +1,6 @@
 class first_test;
     virtual tb_ifc.TEST test_if;
+    parameter nr_of_opertions = 10;
     //int seed = 555;
 
     function new(virtual tb_ifc.TEST test_if);
@@ -23,9 +24,10 @@ class first_test;
 
         $display("\nWriting values to register stack...");
         @(posedge test_if.cb) test_if.cb.load_en <= 1'b1;  // enable writing to register
-        repeat (10) begin
+        repeat (nr_of_opertions) begin
             @(posedge test_if.cb) randomize_transaction;
             @(negedge test_if.cb) print_transaction;
+            coverage.sample;
         end
         @(posedge test_if.cb) test_if.cb.load_en <= 1'b0;  // turn-off writing to register
 
@@ -34,12 +36,13 @@ class first_test;
 
         // read back and display same three register locations
         $display("\nReading back the same register locations written...");
-        for (int i=0; i<=9; i++) begin
+        for (int i=0; i < nr_of_opertions; i++) begin
         // later labs will replace this loop with iterating through a
         // scoreboard to determine which addresses were written and
         // the expected values to be read back
             @(posedge test_if.cb) test_if.cb.read_pointer <= i;
             @(negedge test_if.cb) print_results;
+            coverage.sample;
         end
 
         // for (int i=0; i<=10; i++) begin
@@ -88,4 +91,21 @@ class first_test;
         $display("  result = %0d", test_if.cb.instruction_word.result);
         $display("  time = %0d\n", $time);
     endfunction: print_results
+
+    covergroup coverage;
+        coverpoint test_if.cb.operand_a{
+            bins neg = {[-15:-1]};
+            bins zero = {0};
+            bins pos = {[1:15]};
+        }
+        coverpoint test_if.cb.operand_b{
+            bins zero = {0};
+            bins pos = {[1:15]};
+        }
+        coverpoint test_if.cb.opcode{
+            bins opcode_values = {[0:7]};
+        }
+    endgroup
 endclass
+
+// tema -> coverpoint pt rezultat

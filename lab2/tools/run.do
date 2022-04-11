@@ -3,6 +3,9 @@
 #                     starts the simulation
 #---------------------------------------------------------------------------------------
 
+# random -> stabil pe thread
+# urandom -> stabil pe clasa
+
 # Set transcript file name
 transcript file ../reports/regression_transcript/transcript_$1
 

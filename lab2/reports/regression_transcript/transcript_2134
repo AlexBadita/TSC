@@ -1,0 +1,207 @@
+# 0
+# vsim +notimingchecks +nowarnTSCALE -sva -nocoverage -quiet -sv_seed 2134 -novopt top 
+# //  ModelSim SE 6.6d Nov  1 2010 
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(77): Clocking block output test_if.cb.opcode is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(78): Clocking block output test_if.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(79): Clocking block output test_if.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(76): Clocking block output test_if.cb.write_pointer is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(85): Clocking block output test_if.cb.read_pointer is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(103): Clocking block output #parent#.test_if.cb.opcode is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(94): Clocking block output #parent#.test_if.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(99): Clocking block output #parent#.test_if.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(103): Clocking block output #parent#.test_if.cb.opcode is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(94): Clocking block output #parent#.test_if.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(99): Clocking block output #parent#.test_if.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /top/test
+# 
+# 
+# ***********************************************************
+# ***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***
+# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
+# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
+# ***********************************************************
+# 
+# Reseting the instruction register...
+# 
+# Writing values to register stack...
+# Writing to register location 0: 
+#   opcode = 6 (DIV)
+#   operand_a = 13
+#   operand_b = 4
+#   result = 3
+#   time = 20
+# 
+# Writing to register location 1: 
+#   opcode = 7 (MOD)
+#   operand_a = 5
+#   operand_b = 1
+#   result = 0
+#   time = 30
+# 
+# Writing to register location 2: 
+#   opcode = 3 (ADD)
+#   operand_a = 13
+#   operand_b = 3
+#   result = 16
+#   time = 40
+# 
+# Writing to register location 3: 
+#   opcode = 1 (PASSA)
+#   operand_a = 10
+#   operand_b = 13
+#   result = 10
+#   time = 50
+# 
+# Writing to register location 4: 
+#   opcode = 2 (PASSB)
+#   operand_a = 9
+#   operand_b = 15
+#   result = 15
+#   time = 60
+# 
+# Writing to register location 5: 
+#   opcode = 1 (PASSA)
+#   operand_a = 12
+#   operand_b = 1
+#   result = 12
+#   time = 70
+# 
+# Writing to register location 6: 
+#   opcode = 5 (MULT)
+#   operand_a = 12
+#   operand_b = 3
+#   result = 36
+#   time = 80
+# 
+# Writing to register location 7: 
+#   opcode = 1 (PASSA)
+#   operand_a = 1
+#   operand_b = 14
+#   result = 1
+#   time = 90
+# 
+# Writing to register location 8: 
+#   opcode = 6 (DIV)
+#   operand_a = 6
+#   operand_b = 7
+#   result = 0
+#   time = 100
+# 
+# Writing to register location 9: 
+#   opcode = 7 (MOD)
+#   operand_a = 5
+#   operand_b = 8
+#   result = 5
+#   time = 110
+# 
+# 
+# Reading back the same register locations written...
+# Read from register location 0: 
+#   opcode = 6 (DIV)
+#   operand_a = 13
+#   operand_b = 4
+#   result = 3
+#   time = 125
+# 
+# Read from register location 1: 
+#   opcode = 7 (MOD)
+#   operand_a = 5
+#   operand_b = 1
+#   result = 0
+#   time = 135
+# 
+# Read from register location 2: 
+#   opcode = 3 (ADD)
+#   operand_a = 13
+#   operand_b = 3
+#   result = 16
+#   time = 145
+# 
+# Read from register location 3: 
+#   opcode = 1 (PASSA)
+#   operand_a = 10
+#   operand_b = 13
+#   result = 10
+#   time = 155
+# 
+# Read from register location 4: 
+#   opcode = 2 (PASSB)
+#   operand_a = 9
+#   operand_b = 15
+#   result = 15
+#   time = 165
+# 
+# Read from register location 5: 
+#   opcode = 1 (PASSA)
+#   operand_a = 12
+#   operand_b = 1
+#   result = 12
+#   time = 175
+# 
+# Read from register location 6: 
+#   opcode = 5 (MULT)
+#   operand_a = 12
+#   operand_b = 3
+#   result = 36
+#   time = 185
+# 
+# Read from register location 7: 
+#   opcode = 1 (PASSA)
+#   operand_a = 1
+#   operand_b = 14
+#   result = 1
+#   time = 195
+# 
+# Read from register location 8: 
+#   opcode = 6 (DIV)
+#   operand_a = 6
+#   operand_b = 7
+#   result = 0
+#   time = 205
+# 
+# Read from register location 9: 
+#   opcode = 7 (MOD)
+#   operand_a = 5
+#   operand_b = 8
+#   result = 5
+#   time = 215
+# 
+# 
+# ***********************************************************
+# ***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***
+# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
+# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
+# ***********************************************************
+# 
+# ** Note: $finish    : ../lab01_testbench-interface/first_test.sv(57)
+#    Time: 220 ns  Iteration: 2  Instance: /top/test
