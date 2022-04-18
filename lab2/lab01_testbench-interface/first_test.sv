@@ -1,10 +1,31 @@
 class first_test;
     virtual tb_ifc.TEST test_if;
-    parameter nr_of_opertions = 10;
+    parameter nr_of_opertions = 100;
     //int seed = 555;
+
+    covergroup my_coverage;
+        OPERAND_A: coverpoint test_if.cb.operand_a{
+            bins neg[] = {[-15:-1]};
+            bins zero = {0};
+            bins pos[] = {[1:15]};
+        }
+        OPERAND_B: coverpoint test_if.cb.operand_b{
+            bins zero = {0};
+            bins pos[] = {[1:15]};
+        }
+        OPCODE: coverpoint test_if.cb.opcode{
+            bins opcode_values[] = {[0:7]};
+        }
+        RESULT: coverpoint test_if.cb.result{
+            bins neg[] = {[-225:-1]};
+            bins zero = {0};
+            bins pos[] = {[1:225]};
+        }
+    endgroup
 
     function new(virtual tb_ifc.TEST test_if);
         this.test_if = test_if;
+        my_coverage = new();
     endfunction
 
     task run();
@@ -27,7 +48,7 @@ class first_test;
         repeat (nr_of_opertions) begin
             @(posedge test_if.cb) randomize_transaction;
             @(negedge test_if.cb) print_transaction;
-            coverage.sample;
+            my_coverage.sample();
         end
         @(posedge test_if.cb) test_if.cb.load_en <= 1'b0;  // turn-off writing to register
 
@@ -42,7 +63,7 @@ class first_test;
         // the expected values to be read back
             @(posedge test_if.cb) test_if.cb.read_pointer <= i;
             @(negedge test_if.cb) print_results;
-            coverage.sample;
+            my_coverage.sample();
         end
 
         // for (int i=0; i<=10; i++) begin
@@ -68,7 +89,7 @@ class first_test;
         // write_pointer values in a later lab
         //
         static int temp = 0;
-        test_if.cb.operand_a     <= $urandom()%16;                 // between -15 and 15
+        test_if.cb.operand_a     <= $signed($urandom)%16;                 // between -15 and 15
         test_if.cb.operand_b     <= $unsigned($urandom)%16;            // between 0 and 15
         test_if.cb.opcode        <= opcode_t'($unsigned($urandom)%8);  // between 0 and 7, cast to opcode_t type; casting
         test_if.cb.write_pointer <= temp++; // <= -> temp; = -> (temp + 1)
@@ -91,21 +112,6 @@ class first_test;
         $display("  result = %0d", test_if.cb.instruction_word.result);
         $display("  time = %0d\n", $time);
     endfunction: print_results
-
-    covergroup coverage;
-        coverpoint test_if.cb.operand_a{
-            bins neg = {[-15:-1]};
-            bins zero = {0};
-            bins pos = {[1:15]};
-        }
-        coverpoint test_if.cb.operand_b{
-            bins zero = {0};
-            bins pos = {[1:15]};
-        }
-        coverpoint test_if.cb.opcode{
-            bins opcode_values = {[0:7]};
-        }
-    endgroup
 endclass
 
 // tema -> coverpoint pt rezultat

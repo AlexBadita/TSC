@@ -5,7 +5,7 @@ call build.bat
 ::========================================================================================
 cd ../sim
 ::vsim -gui -do run.do
-::vsim -gui -do "do run.do %1" run.do
+::vsim -%2 -do "do run.do %1" run.do
 vsim -gui -do "do run.do %1"
 :: -c sau -gui
 pause
