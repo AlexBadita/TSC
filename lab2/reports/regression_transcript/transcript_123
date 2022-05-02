@@ -9,7 +9,7 @@
 # 
 # Top level modules:
 # 	top
-# vsim +notimingchecks +nowarnTSCALE +TESTNAME=123 -coverage -notogglevlogints -sva -quiet -novopt top 
+# vsim +notimingchecks +code=bcesft +nowarnTSCALE -coverage -sva -quiet -sv_seed 123 -novopt top 
 # Refreshing C:\Users\badit\Desktop\TSC\TSC\lab2\sim\work.instr_register_pkg
 # Refreshing C:\Users\badit\Desktop\TSC\TSC\lab2\sim\work.top
 # Refreshing C:\Users\badit\Desktop\TSC\TSC\lab2\sim\work.tb_ifc
@@ -48,7 +48,40 @@
 # ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(108): Clocking block output test_if.cb.read_pointer is not legal in this
 # or another expression.
 #         Region: /top/test
-# ** Warning: (vsim-8634) Code was not compiled with coverage options.
+# vsim +notimingchecks +nowarnTSCALE +TESTNAME=123 -coverage -notogglevlogints -sva -quiet -novopt top 
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(16): Clocking block output #parent#.test_if.cb.opcode is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(7): Clocking block output #parent#.test_if.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(12): Clocking block output #parent#.test_if.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(16): Clocking block output #parent#.test_if.cb.opcode is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(7): Clocking block output #parent#.test_if.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(12): Clocking block output #parent#.test_if.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(100): Clocking block output test_if.cb.opcode is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(101): Clocking block output test_if.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(102): Clocking block output test_if.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(99): Clocking block output test_if.cb.write_pointer is not legal in this
+# or another expression.
+#         Region: /top/test
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/first_test.sv(108): Clocking block output test_if.cb.read_pointer is not legal in this
+# or another expression.
+#         Region: /top/test
 # ** Error: (vish-4014) No objects found matching '/top/test/seed'.
 # Executing ONERROR command at macro ./wave.do line 3
 # 
@@ -1472,9 +1505,9 @@
 # ***********************************************************
 # 
 # ** Note: $finish    : ../lab01_testbench-interface/first_test.sv(80)
-#    Time: 2020 ns  Iteration: 2  Instance: /top/test
+#    Time: 2020 ps  Iteration: 2  Instance: /top/test
 # 1
 # Break in Task run at ../lab01_testbench-interface/first_test.sv line 80
 # Simulation Breakpoint: 1
 # Break in Task run at ../lab01_testbench-interface/first_test.sv line 80
-# MACRO ./run.do PAUSED at line 52
+# MACRO ./run.do PAUSED at line 53
